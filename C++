@@ -1,0 +1,43 @@
+Intuition
+
+First transpose the given nxn matrix.
+Then reverse the each row to get 90 degree rotation.
+
+noraml          Transpose       rotated 
+matrix           matrix         matrix
+
+|1  2  3|      |1  4  7|      |7  4  1|
+|4  5  6|  ===>|2  5  8|  ===>|8  5  2|
+|7  8  9|      |3  6  9|      |9  6  3|
+
+Approach
+
+Use Two for loop to transpose the matrix.
+Another for loop to reverse the row to get 90 degree rotation.
+
+Complexity
+
+Time complexity:O(n*n)+O(n)
+Space complexity:O(1)
+
+Code
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n=matrix.size();
+
+    //👉Transpose Matrix
+
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+
+    //👉 Rotate row
+
+        for(int i=0;i<n;i++){
+            reverse(matrix[i].begin(),matrix[i].end());
+        }
+    }
+}
